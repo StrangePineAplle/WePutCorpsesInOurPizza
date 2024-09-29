@@ -53,23 +53,23 @@ $dishes = sqlrequest("SELECT * FROM dish");
 
        <!-- Попап для корзины -->
 
-<div id="cartPopup" class="popup cart-popup" style="display:none;">
-    <div class="popup-content auth-popup-content">
-        <span class="close" onclick="closeCartPopup('cartPopup')">&times;</span>
-        <h2>Корзина</h2>
-        <div id="cartItems">
-            <!-- Здесь будут отображаться товары в корзине -->
-            <p>Ваша корзина пуста.</p> <!-- Сообщение по умолчанию -->
+        <div id="cartPopup" class="popup cart-popup" style="display:none;">
+            <div class="popup-content auth-popup-content">
+                <span class="close" onclick="closeCartPopup('cartPopup')">&times;</span>
+                <h2>Корзина</h2>
+                <div id="cartItems">
+                    <!-- Здесь будут отображаться товары в корзине -->
+                    <p>Ваша корзина пуста.</p> <!-- Сообщение по умолчанию -->
+                </div>
+                <button id="checkoutButton" class="auth-submit-button">Оформить заказ</button>
+            </div>
         </div>
-        <button id="checkoutButton" class="auth-submit-button">Оформить заказ</button>
-    </div>
-</div>
 
-        <!-- Контейнер 2 : Секция "О нас" -->
-        <div class="about-section" id="about">
-            <h1>Привет, мы кладём в пиццу ананасы!</h1>
-            <p>Ахаха</p>
-        </div>
+<!-- Контейнер 2 : Секция "О нас" -->
+<div class="about-section" id="about">
+    <h1>Привет, мы кладём в пиццу ананасы!</h1>
+    <p>Ахаха</p>
+</div>
 
 <!-- Контейнер 3 : Меню с блоками -->
 <div class="menu-block" id="menu">
