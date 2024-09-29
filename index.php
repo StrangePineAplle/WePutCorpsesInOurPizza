@@ -27,8 +27,8 @@ $dishes = sqlrequest("SELECT * FROM dish");
             <a href="#about">О нас</a>
             <a href="#cart">Меню</a>
             <a href="#cart">Корзина</a>
-            <button id="authButton" onclick="openPopup('authPopup')"><?= $userNick ? 'Выйти' : 'Авторизация' ?></button>
             <p id="statusMessage">Вы: <?= $userNick ? htmlspecialchars($userNick) : 'не авторизовались' ?></p> <!-- Сообщение о статусе -->
+            <button id="authButton" onclick="openPopup('authPopup')"><?= $userNick ? 'Выйти' : 'Авторизация' ?></button>
         </div>
 
         <!-- Попап для авторизации -->
@@ -54,7 +54,7 @@ $dishes = sqlrequest("SELECT * FROM dish");
         <!-- Контейнер 2 : Секция "О нас" -->
         <div class="about-section" id="about">
             <h1>Привет, мы кладём в пиццу ананасы!</h1>
-            <p>Ахаха.</p>
+            <p>Ахаха</p>
         </div>
 
 <!-- Контейнер 3 : Меню с блоками -->
