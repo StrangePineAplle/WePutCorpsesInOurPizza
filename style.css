@@ -8,7 +8,9 @@ body {
 }
 
 .container {
-    flex: 1; /* Позволяет контейнеру занимать все доступное пространство */
+    display: flex; /* Создаем гибкую структуру */
+    flex-direction: column; /* Располагаем элементы вертикально */
+    flex: 1;
 }
 
 /* Стили для фиксированного меню */
@@ -37,9 +39,8 @@ body {
 
 /* Стили для секции "О нас" */
 .about-section {
-    background-image: url('./img/img1.png'); /* Укажите путь к вашей картинке */
+    background-image: url('./img/img1.jpeg'); /* Укажите путь к вашей картинке */
     background-size: contain; /* Обеспечивает полное отображение изображения */
-    background-repeat: no-repeat; /* Изображение не будет повторяться */
     background-position: center; /* Центрирование изображения */
     color: rgb(148, 0, 0); /* Цвет текста */
     padding: 50px 20px; /* Отступы */
@@ -72,7 +73,7 @@ body {
 }
 
 /* Стили для подвала */
-footer {
+.footer {
    text-align: center; 
    padding: 10px; 
    background-color: #333; 
