@@ -28,7 +28,7 @@ $dishes = sqlrequest("SELECT * FROM dish");
             <a href="#menu">Меню</a>
             <a onclick="openCartPopup('cartPopup')">Корзина</a>
             <p id="statusMessage">Вы: <?= $userNick ? htmlspecialchars($userNick) : 'не авторизовались' ?></p> <!-- Сообщение о статусе -->
-            <button id="authButton" onclick="openPopup('authPopup')"><?= $userNick ? 'Выйти' : 'Авторизация' ?></button>
+            <button id="authButton" class="auth-button" onclick="openPopup('authPopup')"><?= $userNick ? 'Выйти' : 'Авторизация' ?></button>
         </div>
 
         <!-- Попап для авторизации -->
@@ -52,6 +52,7 @@ $dishes = sqlrequest("SELECT * FROM dish");
         </div>
 
        <!-- Попап для корзины -->
+<<<<<<< HEAD
 <div id="cartPopup" class="popup cart-popup" style="display:none;">
     <div class="popup-content auth-popup-content">
         <span class="close" onclick="closeCartPopup('cartPopup')">&times;</span>
@@ -76,11 +77,10 @@ $dishes = sqlrequest("SELECT * FROM dish");
         <?php foreach ($dishes as $dish): ?>
             <!-- Блок меню для каждого блюда -->
             <div class="block">
-                <img src="./img/img1.png" alt="<?= htmlspecialchars($dish['name']) ?>">
+                <img src="./img/img1.png" alt="<?= htmlspecialchars($dish['name']) ?>" onclick="openPopup('popup<?= $dish['id'] ?>')" style="cursor: pointer;">
                 <h3><?= htmlspecialchars($dish['name']) ?></h3> <!-- Добавлено название блюда -->
                 <p><?= htmlspecialchars($dish['Description_sh']) ?></p>
-		<p><?= htmlspecialchars($dish['Cost']) ?></p>
-                <button onclick="openPopup('popup<?= $dish['id'] ?>')">Подробнее</button>
+                <button class="menu-button" onclick="openPopup('popup<?= $dish['id'] ?>')">Подробнее</button>
             </div>
 
             <!-- Попапы для подробного описания -->

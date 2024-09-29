@@ -34,21 +34,26 @@ body {
 
 .navbar a {
     color: white; /* Цвет текста ссылок */
-    padding: 5px 10px; /* Уменьшены отступы вокруг ссылок */
+    background-color: #28a745; /* Цвет фона кнопки */
+    padding: 5px 100px; /* Уменьшены отступы вокруг ссылок */
     text-decoration: none; /* Убираем подчеркивание */
+    border-radius: 5px; /* Закругленные углы */
+    cursor: pointer; /* Курсор при наведении */
+    margin: 0 10px; /* Отступы между ссылками (слева и справа) */
 }
 
 .navbar a:hover {
-    background-color: #575757; /* Цвет фона при наведении на ссылку */
+    background-color: #218838; /* Темнее при наведении на кнопку */
 }
 
-#authButton {
+.auth-button {
     padding: 10px 20px; /* Уменьшены отступы внутри кнопки */
     background-color: #28a745; /* Цвет фона кнопки */
     color: white; /* Цвет текста кнопки */
     border: none; /* Убираем рамку */
     border-radius: 5px; /* Закругленные углы */
     cursor: pointer; /* Курсор при наведении */
+    margin-top: 0px;
 }
 
 #statusMessage {
@@ -99,6 +104,7 @@ body {
     margin-top: 20px;
 }
 
+
 .block {
     width: 30%;
     margin-bottom: 20px;
@@ -117,6 +123,21 @@ body {
     width: 70%;
     height: auto;
     margin-top: 20px;
+}
+
+/* Стили для кнопки "Подробнее" и "Добавить в корзину" */
+button {
+    background-color: #28a745; /* Зеленый цвет фона кнопки */
+    color: white; /* Цвет текста кнопки */
+    border: none; /* Убираем рамку */
+    border-radius: 5px; /* Закругленные углы */
+    padding: 10px 15px; /* Отступы внутри кнопки */
+    cursor: pointer; /* Курсор при наведении */
+    margin-top: 10px; /* Отступ сверху для кнопки */
+}
+
+button:hover {
+    background-color: #218838; /* Темнее при наведении на кнопку */
 }
 
 /*--------------------------------------------------------------------*/
