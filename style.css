@@ -4,7 +4,10 @@ body {
     flex-direction: column;
     min-height: 100vh; /* Задает минимальную высоту для body */
     margin: 0;
-    background-color: #ECA442; /* Установлен цвет фона для всей страницы */
+    background-image: url('./img/block.png'); /* Укажите путь к вашей текстуре */
+    background-repeat: repeat; /* Дублирование изображения по всей области */
+    background-size: 150px 150px; /* Уменьшение размера изображения до 50x50 пикселей */
+    background-color: #490740; /* Цвет фона будет виден только если изображение не загрузится */
 }
 
 .container {
@@ -58,7 +61,7 @@ body {
 
 /* Стили для секции "О нас" */
 .about-section {
-    background-image: url('./img/img1.jpeg'); /* Укажите путь к вашей картинке */
+    background-image: url('./img/imgHeadBack.png'); /* Укажите путь к вашей картинке */
     background-size: cover; /* Обеспечивает полное отображение изображения */
     background-position: center; /* Центрирование изображения */
     padding: 50px 20px; /* Отступы */
@@ -100,13 +103,23 @@ body {
     width: 30%;
     margin-bottom: 20px;
     text-align: center;
+
+    background-image: url('./img/blockMenu.png'); /* Укажите путь к вашей текстуре */
+    background-repeat: repeat; /* Дублирование изображения по всей области */
+    background-size: 150px 150px; /* Уменьшение размера изображения до 150x150 пикселей */
+    background-color: #6d3f03; 
+    padding-bottom: 20px; /* Отступ внизу блока */
+    
+    color: white; /* Цвет текста на белый */
 }
 
 .block img {
-    width: 100%;
+    width: 70%;
     height: auto;
+    margin-top: 20px;
 }
 
+/*--------------------------------------------------------------------*/
 
 .close {
    cursor: pointer; 
@@ -115,10 +128,13 @@ body {
 /* Стили для подвала */
 .footer {
    text-align: center; 
-   padding: 10px; 
-   background-color: #333; 
+   padding: 30px; 
    color: white; 
    margin-top: auto;
+   background-image: url('./img/footBlock.png'); /* Укажите путь к вашей текстуре */
+   background-repeat: repeat; /* Дублирование изображения по всей области */
+   background-size: 150px 150px; /* Уменьшение размера изображения до 50x50 пикселей */
+   background-color: #042c4d; 
 }
 
 

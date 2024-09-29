@@ -112,7 +112,7 @@ $dishes = sqlrequest("SELECT * FROM dish");
     <!-- Контейнер 4 : Подвал -->
     <div class="container">
         <!-- Здесь подразумевается место для содержимого -->
-        <footer class="footer">Пока</footer>
+        <footer class="footer"></footer>
     </div>
 
     <!-- Подключение скрипта -->
