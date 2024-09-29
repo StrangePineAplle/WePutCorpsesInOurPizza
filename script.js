@@ -1,3 +1,30 @@
+
+
+
+let cartIDs = [];
+
+// Функция для добавления ID товара в корзину
+function addToCart(button) 
+{
+    const itemId = button.id;
+    cartIDs.push(itemId);
+    console.log(`Товары  : ${cartIDs}`);
+}
+
+
+document.querySelectorAll('.add-to-cart').forEach(button => {
+    button.addEventListener('click', function() {
+        addToCart(this);
+    });
+});
+
+
+
+
+
+
+
+
 function openPopup(popupId) {
     document.getElementById(popupId).style.display = 'block';
 }

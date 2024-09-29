@@ -82,7 +82,7 @@ $dishes = sqlrequest("SELECT * FROM dish");
                                 <h2><?= htmlspecialchars($dish['name']) ?></h2>
                                 <p><?= htmlspecialchars($dish['Description_fu']) ?></p>
                                 <div class="button-container">
-                                    <button class="add-to-cart">Добавить в корзину</button>
+                                    <button class="add-to-cart" id="<?= htmlspecialchars($dish['id']) ?>">Добавить в корзину</button>
                                 </div>
                             </td>
                         </tr>
