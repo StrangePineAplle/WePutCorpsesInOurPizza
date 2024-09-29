@@ -76,10 +76,6 @@ function closePopup(popupId) {
 }
 
 
-function closeCartPopup(popupId) {
-    document.getElementById(popupId).style.display = 'none';
-}
-
 // Закрытие попапа при нажатии вне его содержимого
 window.onclick = function(event) {
     const popups = document.querySelectorAll('.popup');
