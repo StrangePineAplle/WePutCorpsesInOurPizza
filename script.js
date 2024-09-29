@@ -1,6 +1,3 @@
-
-
-
 let cartIDs = [];
 
 // Функция для добавления ID товара в корзину
@@ -17,11 +14,6 @@ document.querySelectorAll('.add-to-cart').forEach(button => {
         addToCart(this);
     });
 });
-
-
-
-
-
 
 
 

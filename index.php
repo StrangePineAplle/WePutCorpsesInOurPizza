@@ -51,10 +51,10 @@ $dishes = sqlrequest("SELECT * FROM dish");
             </div>
         </div>
 
-        <!-- Попап для корзины -->
-        <div id="cartPopup" class="popup" style="display:none;">
+       <!-- Попап для корзины -->
+        <div id="cartPopup" class="popup cart-popup" style="display:none;">
             <div class="popup-content auth-popup-content">
-                <span class="close" onclick="closePopup('cartPopup')">&times;</span>
+                <span class="close" onclick="closeCartPopup()">&times;</span>
                 <h2>Корзина</h2>
                 <div id="cartItems">
                     <!-- Здесь будут отображаться товары в корзине -->
