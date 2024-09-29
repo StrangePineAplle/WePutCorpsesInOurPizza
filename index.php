@@ -79,6 +79,7 @@ $dishes = sqlrequest("SELECT * FROM dish");
                 <img src="./img/img1.png" alt="<?= htmlspecialchars($dish['name']) ?>">
                 <h3><?= htmlspecialchars($dish['name']) ?></h3> <!-- Добавлено название блюда -->
                 <p><?= htmlspecialchars($dish['Description_sh']) ?></p>
+		<p><?= htmlspecialchars($dish['Cost']) ?></p>
                 <button onclick="openPopup('popup<?= $dish['id'] ?>')">Подробнее</button>
             </div>
 
