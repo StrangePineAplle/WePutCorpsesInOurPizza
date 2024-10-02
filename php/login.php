@@ -24,6 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (!empty($resultsUser)) {
         $_SESSION['user_nick'] = $nick; // Сохраняем ник в сессии
+        $_SESSION['user_id'] = $resultsUser[0]['id'];
         echo json_encode(["status" => "success", "message" => "Успешная авторизация!", "nick" => $nick]);
     } else {
         echo json_encode(["status" => "error", "message" => "Неправильный ник или пароль."]);

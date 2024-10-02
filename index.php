@@ -27,8 +27,10 @@ $dishes = sqlrequest("SELECT * FROM dish");
             <a href="#about">О нас</a>
             <a href="#menu">Меню</a>
             <a onclick="openCartPopup('cartPopup')">Корзина</a>
+            <a >Мои заказы</a>
             <p id="statusMessage">Вы: <?= $userNick ? htmlspecialchars($userNick) : 'не авторизовались' ?></p> <!-- Сообщение о статусе -->
             <button id="authButton" class="auth-button" onclick="openPopup('authPopup')"><?= $userNick ? 'Выйти' : 'Авторизация' ?></button>
+            <button id="regButton" class="auth-button" >Регистрация</button>
         </div>
 
         <!-- Попап для авторизации -->
@@ -52,7 +54,6 @@ $dishes = sqlrequest("SELECT * FROM dish");
         </div>
 
        <!-- Попап для корзины -->
-
         <div id="cartPopup" class="popup cart-popup" style="display:none;">
             <div class="popup-content auth-popup-content">
                 <span class="close" onclick="closePopup('cartPopup')">&times;</span>
@@ -61,9 +62,14 @@ $dishes = sqlrequest("SELECT * FROM dish");
                     <!-- Здесь будут отображаться товары в корзине -->
                     <p>Ваша корзина пуста.</p> <!-- Сообщение по умолчанию -->
                 </div>
-                <button id="checkoutButton" class="auth-submit-button">Оформить заказ</button>
+                <button id="checkoutButton" class="auth-submit-button" onclick="placinganorder()">Оформить заказ</button>
             </div>
         </div>
+
+
+        <!-- Попап для авторизации -->
+
+
 
 <!-- Контейнер 2 : Секция "О нас" -->
 <div class="about-section" id="about">
@@ -80,6 +86,7 @@ $dishes = sqlrequest("SELECT * FROM dish");
                 <img src="./img/img1.png" alt="<?= htmlspecialchars($dish['name']) ?>" onclick="openPopup('popup<?= $dish['id'] ?>')" style="cursor: pointer;">
                 <h3><?= htmlspecialchars($dish['name']) ?></h3> <!-- Добавлено название блюда -->
                 <p><?= htmlspecialchars($dish['Description_sh']) ?></p>
+                <p><?= htmlspecialchars($dish['Cost']) ?></p>
                 <button class="menu-button" onclick="openPopup('popup<?= $dish['id'] ?>')">Подробнее</button>
             </div>
 
@@ -95,6 +102,7 @@ $dishes = sqlrequest("SELECT * FROM dish");
                             <td class="popup-text-container">
                                 <h2><?= htmlspecialchars($dish['name']) ?></h2>
                                 <p><?= htmlspecialchars($dish['Description_fu']) ?></p>
+                                <p><?= htmlspecialchars($dish['Cost'])?>  </p>
                                 <div class="button-container">
                                     <button class="add-to-cart" id="<?= htmlspecialchars($dish['id']) ?>" data-price="<?= htmlspecialchars($dish['Cost']) ?>">Добавить в корзину</button>
                                 </div>

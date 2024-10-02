@@ -57,6 +57,53 @@ function displayCartReceipt() {
     cartItemsContainer.appendChild(totalElement);
 }
 
+
+function placinganorder() {
+    // Проверка на наличие элементов в корзине
+    if (cart.size === 0) {
+        alert("Корзина пуста!");
+        return;
+    }
+
+    // Преобразование содержимого корзины в массив
+    let cartArray = Array.from(cart.entries()).map(([key, value]) => {
+        return { productId: key, quantity: value };
+    });
+
+
+    // Создание AJAX-запроса
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "php/process_order.php", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+    // Обработка ответа от сервера
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                const response = JSON.parse(xhr.responseText);
+                console.log("Ответ от сервера:", response); // Отладочный вывод
+                if (response.isAuthenticated) {
+                    if (response.orderSuccess) {
+                        alert("Заказ успешно оформлен!");
+                    } else {
+                        alert("Ошибка при оформлении заказа.");
+                    }
+                } else {
+                    alert("Пожалуйста, авторизуйтесь, чтобы оформить заказ.");
+                }
+            } else {
+                alert("Ошибка при обработке запроса.");
+            }
+        }
+    };
+
+    // Формирование данных для отправки
+    const data = `cart=${encodeURIComponent(JSON.stringify(cartArray))}`;
+    
+    // Отправка запроса
+    xhr.send(data);
+}
+
 // Функция для открытия попапа корзины и отображения чека
 function openCartPopup() 
 {
@@ -102,7 +149,8 @@ document.getElementById('authForm').onsubmit = function(event) {
         if (data.status === 'success') {
             closePopup('authPopup'); // Закрываем попап при успешной авторизации
             document.getElementById('authButton').innerText = 'Выйти'; // Меняем текст кнопки на "Выйти"
-            document.getElementById('statusMessage').innerText = 'Вы: ' + data.nick + ' (авторизованы)'; 
+            document.getElementById('statusMessage').innerText = 'Вы: ' + data.nick ; 
+            document.getElementById('regButton').style.display = "none";
         }
     })
     .catch(error => console.error('Ошибка:', error));
@@ -124,10 +172,16 @@ document.getElementById('authButton').onclick = function() {
             document.getElementById('statusMessage').innerText = 'Вы: не авторизовались'; // Обновляем статус
         })
         .catch(error => console.error('Ошибка:', error));
+        document.getElementById('regButton').style.display = "block";
     } else {
         openPopup('authPopup');
     }
 };
 
-// Убедитесь, что обработчик события для открытия попапа корзины правильно настроен
+
 document.querySelector('.navbar a[onclick*="cartPopup"]').addEventListener('click', openCartPopup);
+
+
+
+
+
