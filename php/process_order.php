@@ -11,13 +11,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $id = $_SESSION['user_id'] ;
         
 
-        sqlrequest("INSERT INTO `pizza`.`orders` (`idUsers`, `Readiness`) VALUES ('$id', b'0');");
+        $res = sqlrequest("INSERT INTO `pizza`.`orders` (`idUsers`, `Readiness`) VALUES ('$id', b'0'); SELECT LAST_INSERT_ID() AS idOrders;");
 
-
+        //error_log(print_r($res, true));
 
         echo json_encode([
             'isAuthenticated' => true,
-            'orderSuccess' => true 
+            'orderSuccess' => true // или false в зависимости от логики
         ]);
     } else {
         echo json_encode(['isAuthenticated' => false]);

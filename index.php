@@ -30,7 +30,7 @@ $dishes = sqlrequest("SELECT * FROM dish");
             <a >Мои заказы</a>
             <p id="statusMessage">Вы: <?= $userNick ? htmlspecialchars($userNick) : 'не авторизовались' ?></p> <!-- Сообщение о статусе -->
             <button id="authButton" class="auth-button" onclick="openPopup('authPopup')"><?= $userNick ? 'Выйти' : 'Авторизация' ?></button>
-            <button id="regButton" class="auth-button" >Регистрация</button>
+            <?= $userNick ? '': '<button id="regButton" class="auth-button">Регистрация</button>' ?>
         </div>
 
         <!-- Попап для авторизации -->
