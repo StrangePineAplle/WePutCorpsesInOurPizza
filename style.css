@@ -8,6 +8,7 @@ body {
     background-repeat: repeat; /* Дублирование изображения по всей области */
     background-size: 150px 150px; /* Уменьшение размера изображения до 50x50 пикселей */
     background-color: #490740; /* Цвет фона будет виден только если изображение не загрузится */
+    font-family: 'Roboto', sans-serif; /* Применяем шрифт Roboto ко всему тексту */
 }
 
 .container {
@@ -35,7 +36,7 @@ body {
 .navbar a {
     color: white; /* Цвет текста ссылок */
     background-color: #28a745; /* Цвет фона кнопки */
-    padding: 5px 100px; /* Уменьшены отступы вокруг ссылок */
+    padding: 5px 50px; /* Уменьшены отступы вокруг ссылок */
     text-decoration: none; /* Убираем подчеркивание */
     border-radius: 5px; /* Закругленные углы */
     cursor: pointer; /* Курсор при наведении */
@@ -54,16 +55,98 @@ body {
     border-radius: 5px; /* Закругленные углы */
     cursor: pointer; /* Курсор при наведении */
     margin-top: 0px;
+    margin-left: 10px;
 }
+
+
 
 #statusMessage {
     margin-left: auto; /* Отодвигаем текст к правому краю */
     color: white; /* Цвет текста сообщения о статусе */
-    padding: 0px 30px; /* Уменьшены отступы вокруг текста статуса */
-    margin-top: 10px; /* Поднимаем текст надписи вверх (можно настроить значение) */
+    background-color: #7f397d; /* Полупрозрачный черный фон для контраста */
+    padding: 10px 20px; /* Увеличены отступы вокруг текста статуса */
+    margin-top: 0px; /* Поднимаем текст надписи вверх (можно настроить значение) */
+    border-radius: 5px; /* Закругленные углы фона */
+    font-size: 0.9em; /* Увеличенный размер шрифта для лучшей читаемости */
+    text-align: center; /* Выравнивание текста по центру (по желанию) */
 }
 /*--------------------------------------------------------------------*/
+/* Стили попапа аунтефикации */
+.popup-auth {
+    display: none; 
+    position: fixed; 
+    left: 0; 
+    top: 0; 
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(0, 0, 0, 0.7); 
+    z-index: 1001; 
+    display: flex; /* Центрируем содержимое попапа */
+    justify-content: center; /* Центрируем по горизонтали */
+    align-items: center; /* Центрируем по вертикали */
+}
 
+.popup-content {
+    background-color: white; /* Белый фон для содержимого попапа */
+    padding: 20px; /* Отступы внутри попапа */
+    border-radius: 10px; /* Закругленные углы */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Тень для создания эффекта глубины */
+    text-align: center; /* Центрируем текст внутри попапа */
+}
+
+.popup-content h2 {
+    margin-bottom: 20px; /* Отступ снизу для заголовка */
+}
+
+/* Стили для кнопки */
+.popup-content button {
+    width: 60%; /* Ширина кнопки */
+    padding: 12px; /* Увеличенные отступы внутри кнопки */
+    margin-top: 20px; /* Отступ сверху для кнопки */
+    background-color: #28a745; /* Зеленый цвет фона кнопки */
+    color: white; /* Цвет текста кнопки */
+    border: none; /* Убираем рамку кнопки */
+    border-radius: 5px; /* Закругленные углы кнопки */
+    font-size: 1em; /* Размер шрифта кнопки */
+    cursor: pointer; /* Курсор при наведении на кнопку */
+}
+
+.popup-content button:hover {
+    background-color: #218838; /* Темнее при наведении на кнопку */
+}
+
+/*стили полей ввода*/
+
+.popup-auth input,
+.popup-auth textarea {
+    width: 50%; /* Ширина поля ввода на всю ширину родительского элемента */
+    padding: 10px; /* Отступы внутри поля ввода */
+    margin-top: 10px; /* Отступ сверху для поля ввода */
+    margin-bottom: 10px; /* Отступ снизу для поля ввода */
+    border: 2px solid #000000; /* Зеленая рамка */
+    border-radius: 5px; /* Закругленные углы рамки */
+    font-size: 1em; /* Размер шрифта */
+    transition: border-color 0.3s ease; /* Плавный переход для цвета рамки */
+}
+
+/* Стили при наведении курсора на любое поле ввода */
+.popup-auth input:hover,
+.popup-auth textarea:hover {
+    border-color: #218838; /* Темнее при наведении на поле ввода */
+}
+
+/* Стили при фокусе на любом поле ввода */
+.popup-auth input:focus,
+.popup-auth textarea:focus {
+    border-color: #218838; /* Темнее при фокусе на поле ввода */
+    outline: none; /* Убираем стандартное обрамление при фокусе */
+}
+
+.popup-auth textarea {
+    resize: vertical; /* Позволяем изменять размер только по вертикали */
+}
+
+/*--------------------------------------------------------------------*/
 /* Стили для секции "О нас" */
 .about-section {
     background-image: url('./img/imgHeadBack.png'); /* Укажите путь к вашей картинке */
@@ -71,7 +154,7 @@ body {
     background-position: center; /* Центрирование изображения */
     padding: 50px 20px; /* Отступы */
     text-align: center; /* Выравнивание текста по центру */
-    min-height: 300px; /* Минимальная высота секции (можно настроить) */
+    min-height: 400px; /* Минимальная высота секции (можно настроить) */
     position: relative; /* Позволяет использовать абсолютное позиционирование для псевдоэлемента */
 }
 
@@ -109,20 +192,57 @@ body {
     width: 30%;
     margin-bottom: 20px;
     text-align: center;
-
+    position: relative;
     background-image: url('./img/blockMenu.png'); /* Укажите путь к вашей текстуре */
     background-repeat: repeat; /* Дублирование изображения по всей области */
     background-size: 150px 150px; /* Уменьшение размера изображения до 150x150 пикселей */
     background-color: #6d3f03; 
     padding-bottom: 20px; /* Отступ внизу блока */
-    
+    border-radius: 30px;
     color: white; /* Цвет текста на белый */
+    font-size: 1em; /* Размер шрифта */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 1); /* Темная тень для текста */
+}
+
+.cost-text {
+    color: rgb(255, 255, 255);; /* Цвет текста - красный */
+    font-weight: bold; /* Жирный шрифт для выделения */
+    font-size: 1.2em; /* Увеличенный размер шрифта */
+    background-color: #28a745; /* Полупрозрачный белый фон для контраста */
+    padding: 6px 10px; /* Отступы вокруг текста */
+    border-radius: 5px; /* Закругленные углы фона */
+    display: inline-block; /* Чтобы фон оборачивал текст */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Тень для создания эффекта поднятия */
+    text-shadow: 0px 0px 0px rgba(0, 0, 0, 1);
 }
 
 .block img {
     width: 70%;
     height: auto;
     margin-top: 20px;
+    border: 5px solid #0A0A0A; /* Коричневая рамка (цвет SaddleBrown) */
+    transition: transform 0.1s ease; /* Плавный переход для эффекта увеличения */
+}
+
+.block img:hover {
+    transform: scale(1.05);
+    border: 5px solid #ff2222; /* Увеличение изображения при наведении */
+}
+
+.block img::after {
+    content: ""; /* Псевдоэлемент для наложения цвета */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(34, 139, 34, 0.5); /* Полупрозрачный зеленый цвет */
+    opacity: 0; /* Скрываем наложение по умолчанию */
+    transition: opacity 0.3s ease; /* Плавный переход для наложения */
+}
+
+.block img:hover::after {
+    opacity: 1; /* Показываем наложение при наведении */
 }
 
 /* Стили для кнопки "Подробнее" и "Добавить в корзину" */
@@ -131,7 +251,7 @@ button {
     color: white; /* Цвет текста кнопки */
     border: none; /* Убираем рамку */
     border-radius: 5px; /* Закругленные углы */
-    padding: 10px 15px; /* Отступы внутри кнопки */
+    padding: 12px 15px; /* Отступы внутри кнопки */
     cursor: pointer; /* Курсор при наведении */
     margin-top: 10px; /* Отступ сверху для кнопки */
 }
@@ -143,21 +263,9 @@ button:hover {
 /*--------------------------------------------------------------------*/
 
 .close {
-   cursor: pointer; 
+    opacity: 0; /* Элемент станет полностью прозрачным */
+    cursor: pointer; 
 }
-
-/* Стили для подвала */
-.footer {
-   text-align: center; 
-   padding: 30px; 
-   color: white; 
-   margin-top: auto;
-   background-image: url('./img/footBlock.png'); /* Укажите путь к вашей текстуре */
-   background-repeat: repeat; /* Дублирование изображения по всей области */
-   background-size: 150px 150px; /* Уменьшение размера изображения до 50x50 пикселей */
-   background-color: #042c4d; 
-}
-
 
 
 /* Стили для попапа */
@@ -198,15 +306,39 @@ button:hover {
 }
 
 /* Стили для картинки в попапе */
+@keyframes blink {
+    0% {
+        border-color: #ff2222; /* Красный цвет */
+    }
+    25% {
+        border-color: #ff2222; /* Красный цвет */
+    }
+    50% {
+        border-color: white; /* Белый цвет */
+    }
+    75% {
+        border-color: white; /* Белый цвет */
+    }
+    100% {
+        border-color: #ff2222; /* Возвращаемся к красному */
+    }
+}
+
 .popup-image {
     width: 100%; /* Ширина картинки */
     height: auto; /* Автоматическая высота для сохранения пропорций */
+    border: 5px solid #ff2222; 
+    animation: blink 1s infinite; /* Применяем анимацию мигания с более коротким временем */
 }
 
 /* Стили для контейнера текста */
 .popup-text-container {
     width: 50%; /* Ширина колонки с текстом */
-    padding-left: 20px; /* Отступ слева от текста */
+    padding-left: 50px; /* Отступ слева от текста */
+}
+
+.selected-text {
+    color: #ff2222; /* Цвет текста - красный */
 }
 
 /* Стили для кнопки "Добавить в корзину" */
@@ -223,3 +355,54 @@ button:hover {
 .add-to-cart:hover {
     background-color: #218838; /* Цвет кнопки при наведении */
 }
+
+
+
+/*--------------------------------------------------------------------*/
+/* Стили для подвала */
+.footer {
+    text-align: center; 
+    padding: 30px; 
+    color: white; 
+    margin-top: auto;
+    background-image: url('./img/footBlock.png'); /* Укажите путь к вашей текстуре */
+    background-repeat: repeat; /* Дублирование изображения по всей области */
+    background-size: 150px 150px; /* Уменьшение размера изображения до 50x50 пикселей */
+    background-color: #042c4d; 
+ }
+
+ .order-container {
+    text-align: left; /* Выравнивание текста влево */
+    margin-top: 50px;
+    padding: 20px;
+    color: white; 
+    
+    background-image: url('./img/ZakazBlock.png');
+    background-repeat: repeat;
+    background-size: 250px 250px;
+    background-color: #042c4d; 
+}
+
+.progress-container {
+    position: relative; /* Для позиционирования внутреннего элемента */
+    background-color: #e0e0e0; /* Цвет фона полосы загрузки */
+    border-radius: 5px; /* Закругленные углы полосы загрузки */
+    height: 20px; /* Высота полосы загрузки */
+    margin-top: 10px; /* Отступ сверху для полосы загрузки */
+}
+
+.progress-bar {
+    background-color: #28a745; /* Зеленый цвет заполнения */
+    height: 100%; /* Высота заполнения равна высоте контейнера */
+    border-radius: 5px; /* Закругленные углы для заполнения */
+}
+
+.progress-percentage {
+    position: absolute; /* Позиционирование относительно родительского контейнера */
+    right: 10px; /* Отступ от правого края */
+    top: 0; /* Выравнивание по верхнему краю */
+    line-height: 20px; /* Центрирование текста по вертикали */
+    font-weight: bold; /* Жирный шрифт для процента */
+    color: #ff2222;
+}
+ 

@@ -17,6 +17,7 @@ $dishes = sqlrequest("SELECT * FROM dish");
     <meta charset="UTF-8">
     <title>Стартовая страница</title>
     <link rel="stylesheet" href="style.css"> <!-- Подключение стилей -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -26,15 +27,15 @@ $dishes = sqlrequest("SELECT * FROM dish");
         <div class="navbar">
             <a href="#about">О нас</a>
             <a href="#menu">Меню</a>
+            <a href="#zakaz">Мои заказы</a>
             <a onclick="openCartPopup('cartPopup')">Корзина</a>
-            <a >Мои заказы</a>
-            <p id="statusMessage">Вы: <?= $userNick ? htmlspecialchars($userNick) : 'не авторизовались' ?></p> <!-- Сообщение о статусе -->
+            <p id="statusMessage" >Вы: <?= $userNick ? htmlspecialchars($userNick) : 'не авторизовались' ?></p> <!-- Сообщение о статусе -->
             <button id="authButton" class="auth-button" onclick="openPopup('authPopup')"><?= $userNick ? 'Выйти' : 'Авторизация' ?></button>
             <?= $userNick ? '': '<button id="regButton" class="auth-button">Регистрация</button>' ?>
         </div>
 
         <!-- Попап для авторизации -->
-        <div id="authPopup" class="popup" style="display:none;">
+        <div id="authPopup" class="popup-auth popup" style="display:none;">
             <div class="popup-content auth-popup-content">
                 <span class="close" onclick="closePopup('authPopup')">&times;</span>
                 <h2>Авторизация</h2>
@@ -83,10 +84,10 @@ $dishes = sqlrequest("SELECT * FROM dish");
         <?php foreach ($dishes as $dish): ?>
             <!-- Блок меню для каждого блюда -->
             <div class="block">
-                <img src="./img/img1.png" alt="<?= htmlspecialchars($dish['name']) ?>" onclick="openPopup('popup<?= $dish['id'] ?>')" style="cursor: pointer;">
+                <img src="./img/pizzaImg/pizza (1).png" alt="<?= htmlspecialchars($dish['name']) ?>" onclick="openPopup('popup<?= $dish['id'] ?>')" style="cursor: pointer;">
                 <h3><?= htmlspecialchars($dish['name']) ?></h3> <!-- Добавлено название блюда -->
                 <p><?= htmlspecialchars($dish['Description_sh']) ?></p>
-                <p><?= htmlspecialchars($dish['Cost']) ?></p>
+                <p class="cost-text"><?= htmlspecialchars($dish['Cost']) ?></p>
                 <button class="menu-button" onclick="openPopup('popup<?= $dish['id'] ?>')">Подробнее</button>
             </div>
 
@@ -100,9 +101,9 @@ $dishes = sqlrequest("SELECT * FROM dish");
                                 <img src="./img/img1.png" alt="<?= htmlspecialchars($dish['name']) ?>" class="popup-image"> <!-- Картинка пиццы -->
                             </td>
                             <td class="popup-text-container">
-                                <h2><?= htmlspecialchars($dish['name']) ?></h2>
+                                <h2><span class="selected-text">ВЫБРАНА:</span> <?= htmlspecialchars($dish['name']) ?></h2>
                                 <p><?= htmlspecialchars($dish['Description_fu']) ?></p>
-                                <p><?= htmlspecialchars($dish['Cost'])?>  </p>
+                                <p class="cost-text" ><?= htmlspecialchars($dish['Cost'])?>  </p>
                                 <div class="button-container">
                                     <button class="add-to-cart" id="<?= htmlspecialchars($dish['id']) ?>" data-price="<?= htmlspecialchars($dish['Cost']) ?>">Добавить в корзину</button>
                                 </div>
@@ -119,9 +120,17 @@ $dishes = sqlrequest("SELECT * FROM dish");
 </div>
 
     <!-- Контейнер 4 : Подвал -->
-    <div class="container">
-        <!-- Здесь подразумевается место для содержимого -->
-        <footer class="footer"></footer>
+    <div class="container" id="zakaz">
+        <div class="order-container">
+
+            <h3>Заказ номер 1</h3>
+            <div class="progress-container">
+                <div class="progress-bar" style="width: 70%;"></div> <!-- Пример заполнения 70% -->
+                <span class="progress-percentage">70%</span> <!-- Процент загрузки -->
+            </div>
+
+        </div>
+    <footer class="footer"></footer>
     </div>
 
     <!-- Подключение скрипта -->
