@@ -8,16 +8,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (!is_null($userNick) && isset($_POST['cart'])) {
         $cartData = json_decode($_POST['cart'], true);
-        $id = $_SESSION['user_id'] ;
-        
+        $id = $_SESSION['user_id'];
+
 
         $res = sqlrequest("INSERT INTO `pizza`.`orders` (`idUsers`, `Readiness`) VALUES ('$id', b'0'); SELECT LAST_INSERT_ID() AS idOrders;");
+        
 
-        //error_log(print_r($res, true));
+        $idD = $res[0]['idOrders'];
+        
+
+        $sqlValues = [];
+        
+
+        foreach ($cartData as $item) {
+            $idO = $item['productId'];
+            $Am = $item['quantity']['quantity'];
+            // Prepare each value set for insertion
+            $sqlValues[] = "($idD, $idO, b'0', $Am)";
+        }
+
+
+        if (!empty($sqlValues)) {
+            $sql = "INSERT INTO pizza.kitchen (`id_dish`, `id_orders`, `Ready`, `amount`) VALUES " . implode(',', $sqlValues) . ";";
+
+            sqlrequest($sql);
+        }
 
         echo json_encode([
             'isAuthenticated' => true,
-            'orderSuccess' => true // или false в зависимости от логики
+            'orderSuccess' => true 
         ]);
     } else {
         echo json_encode(['isAuthenticated' => false]);
