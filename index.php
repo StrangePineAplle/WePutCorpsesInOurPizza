@@ -31,7 +31,7 @@ $dishes = sqlrequest("SELECT * FROM dish");
             <a onclick="openCartPopup('cartPopup')">Корзина</a>
             <p id="statusMessage" >Вы: <?= $userNick ? htmlspecialchars($userNick) : 'не авторизовались' ?></p> <!-- Сообщение о статусе -->
             <button id="authButton" class="auth-button" onclick="openPopup('authPopup')"><?= $userNick ? 'Выйти' : 'Авторизация' ?></button>
-            <?= $userNick ? '': '<button id="regButton" class="auth-button">Регистрация</button>' ?>
+            <button id="regButton" class="auth-button" onclick="openPopup('authPopup')">Регистрация</button>
         </div>
 
         <!-- Попап для авторизации -->
