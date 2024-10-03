@@ -84,7 +84,7 @@ $dishes = sqlrequest("SELECT * FROM dish");
         <?php foreach ($dishes as $dish): ?>
             <!-- Блок меню для каждого блюда -->
             <div class="block">
-                <img src="./img/pizzaImg/pizza (1).png" alt="<?= htmlspecialchars($dish['name']) ?>" onclick="openPopup('popup<?= $dish['id'] ?>')" style="cursor: pointer;">
+                <img src="./img/pizzaImg/<?= htmlspecialchars($dish['Picture']) ?>.png" alt="<?= htmlspecialchars($dish['name']) ?>" onclick="openPopup('popup<?= $dish['id'] ?>')" style="cursor: pointer;">
                 <h3><?= htmlspecialchars($dish['name']) ?></h3> <!-- Добавлено название блюда -->
                 <p><?= htmlspecialchars($dish['Description_sh']) ?></p>
                 <p class="cost-text"><?= htmlspecialchars($dish['Cost']) ?></p>
@@ -98,7 +98,7 @@ $dishes = sqlrequest("SELECT * FROM dish");
                     <table class="popup-table">
                         <tr>
                             <td class="popup-image-container">
-                                <img src="./img/img1.png" alt="<?= htmlspecialchars($dish['name']) ?>" class="popup-image"> <!-- Картинка пиццы -->
+                                <img src="./img/pizzaImg/<?= htmlspecialchars($dish['Picture']) ?>.png" alt="<?= htmlspecialchars($dish['name']) ?>" class="popup-image"> <!-- Картинка пиццы -->
                             </td>
                             <td class="popup-text-container">
                                 <h2><span class="selected-text">ВЫБРАНА:</span> <?= htmlspecialchars($dish['name']) ?></h2>
