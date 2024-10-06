@@ -156,8 +156,9 @@ function updateOrders() {
             if (data.length > 0) {
                 let ordersHtml = '<ul>'; // Начинаем список
                 data.forEach(order => {
-                    const status = order.Readiness == 0 ? 'Готовится' : 'В пути';
-                    ordersHtml += `<li>Заказ ID: ${order.idOrders} - Статус: ${status}</li>`;
+                    if(order.Readiness == 2) ordersHtml += `<li class="orders_list_g">Заказ ID: ${order.idOrders} - Статус: Завершён</li>`;
+                    else if(order.Readiness == 1) ordersHtml += `<li class="orders_list_or">Заказ ID: ${order.idOrders} - Статус: В пути</li>`;
+                    else ordersHtml += `<li class="orders_list_r">Заказ ID: ${order.idOrders} - Статус: Готовится</li>`;
                 });
                 ordersHtml += '</ul>'; // Заканчиваем список
                 ordDiv.innerHTML = ordersHtml; // Добавляем HTML в div

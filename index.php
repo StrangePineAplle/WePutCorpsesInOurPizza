@@ -31,7 +31,7 @@ $dishes = sqlrequest("SELECT * FROM dish");
             <a onclick="openCartPopup('cartPopup')">Корзина</a>
             <p id="statusMessage" >Вы: <?= $userNick ? htmlspecialchars($userNick) : 'не авторизовались' ?></p> <!-- Сообщение о статусе -->
             <button id="authButton" class="auth-button" onclick="openPopup('authPopup')"><?= $userNick ? 'Выйти' : 'Авторизация' ?></button>
-            <button id="regButton" class="auth-button" onclick="openPopup('authPopup')">Регистрация</button>
+            <button id="regButton" class="auth-button" onclick="openPopup('regPopup')">Регистрация</button>
         </div>
 
         <!-- Попап для авторизации -->
@@ -49,6 +49,38 @@ $dishes = sqlrequest("SELECT * FROM dish");
                         <input type="password" name="Password" id="Password" required>
                     </div>
                     <button type="submit" class="auth-submit-button">Войти</button>
+                </form>
+                <div id="responseMessage"></div> <!-- Для отображения сообщений -->
+            </div>
+        </div>
+
+        <!-- Попап для регистрации -->
+        <div id="regPopup" class="popup-auth popup" style="display:none;">
+            <div class="popup-content auth-popup-content">
+                <span class="close" onclick="closePopup('regPopup')">&times;</span>
+                <h2>Регистрация</h2>
+                <form id="regForm">
+                    <div class="form-group">
+                        <label for="name">Имя:</label>
+                        <input type="text" name="name" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="username">Логин:</label>
+                        <input type="text" name="username" id="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Пароль:</label>
+                        <input type="password" name="password" id="password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Почта:</label>
+                        <input type="email" name="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Адрес доставки:</label>
+                        <input type="text" name="address" id="address" required>
+                    </div>
+                    <button type="submit" class="auth-submit-button">Зарегистрироваться</button>
                 </form>
                 <div id="responseMessage"></div> <!-- Для отображения сообщений -->
             </div>
@@ -101,7 +133,8 @@ $dishes = sqlrequest("SELECT * FROM dish");
                                         <img src="./img/pizzaImg/<?= htmlspecialchars($dish['Picture']) ?>.png" alt="<?= htmlspecialchars($dish['name']) ?>" class="popup-image"> <!-- Картинка пиццы -->
                                     </td>
                                     <td class="popup-text-container">
-                                        <h2><span class="selected-text">ВЫБРАНА:</span> <?= htmlspecialchars($dish['name']) ?></h2>
+                                        <h3 style="display: inline;" class="selected-text">ВЫБРАНА:</h3>
+                                        <h2 style="display: inline;"><?= htmlspecialchars($dish['name']) ?></h2>
                                         <p><?= htmlspecialchars($dish['Description_fu']) ?></p>
                                         <p class="cost-text" ><?= htmlspecialchars($dish['Cost'])?>  </p>
                                         <div class="button-container">
@@ -123,7 +156,9 @@ $dishes = sqlrequest("SELECT * FROM dish");
     <div class="container" id="zakaz">
         <div class="order-container">
             <button onclick="updateOrders()">Обновить</button>
-            <div id="ord"></div>
+            <div id="ord">
+
+            </div>
         </div>
         <footer class="footer"></footer>
     </div>

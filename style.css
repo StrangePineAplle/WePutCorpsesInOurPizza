@@ -83,15 +83,24 @@ body {
     z-index: 1001; 
     display: flex; /* Центрируем содержимое попапа */
     justify-content: center; /* Центрируем по горизонтали */
-    align-items: center; /* Центрируем по вертикали */
 }
 
 .popup-content {
+    display: flex;
+    flex-direction: column; /* Вертикальное выравнивание */
+    align-items: stretch; 
     background-color: white; /* Белый фон для содержимого попапа */
     padding: 20px; /* Отступы внутри попапа */
     border-radius: 10px; /* Закругленные углы */
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Тень для создания эффекта глубины */
-    text-align: center; /* Центрируем текст внутри попапа */
+    width: 90%; /* Уменьшаем ширину попапа до 90% */
+    max-width: 400px; /* Максимальная ширина попапа */
+}
+
+.form-group {
+    display: flex; /* Используем flex для выравнивания меток и полей ввода */
+    flex-direction: column; /* Вертикальное расположение элементов внутри группы */
+    margin-bottom: 15px; /* Отступ между полями */
 }
 
 .popup-content h2 {
@@ -100,7 +109,7 @@ body {
 
 /* Стили для кнопки */
 .popup-content button {
-    width: 60%; /* Ширина кнопки */
+    width: 90%; /* Ширина кнопки на всю ширину родительского элемента */
     padding: 12px; /* Увеличенные отступы внутри кнопки */
     margin-top: 20px; /* Отступ сверху для кнопки */
     background-color: #28a745; /* Зеленый цвет фона кнопки */
@@ -119,11 +128,11 @@ body {
 
 .popup-auth input,
 .popup-auth textarea {
-    width: 50%; /* Ширина поля ввода на всю ширину родительского элемента */
+    width: 90%; /* Ширина поля ввода на всю ширину родительского элемента */
     padding: 10px; /* Отступы внутри поля ввода */
     margin-top: 10px; /* Отступ сверху для поля ввода */
     margin-bottom: 10px; /* Отступ снизу для поля ввода */
-    border: 2px solid #000000; /* Зеленая рамка */
+    border: 2px solid #000000; /* Черная рамка */
     border-radius: 5px; /* Закругленные углы рамки */
     font-size: 1em; /* Размер шрифта */
     transition: border-color 0.3s ease; /* Плавный переход для цвета рамки */
@@ -145,7 +154,6 @@ body {
 .popup-auth textarea {
     resize: vertical; /* Позволяем изменять размер только по вертикали */
 }
-
 /*--------------------------------------------------------------------*/
 /* Стили для секции "О нас" */
 .about-section {
@@ -383,26 +391,41 @@ button:hover {
     background-color: #042c4d; 
 }
 
-.progress-container {
-    position: relative; /* Для позиционирования внутреннего элемента */
-    background-color: #e0e0e0; /* Цвет фона полосы загрузки */
-    border-radius: 5px; /* Закругленные углы полосы загрузки */
-    height: 20px; /* Высота полосы загрузки */
-    margin-top: 10px; /* Отступ сверху для полосы загрузки */
+.orders_list_r {
+    max-width: 300px; /* Максимальная ширина списка */
+    padding: 15px; /* Отступы внутри списка */
+    margin-bottom: 20px;
+    background-color: #dd0f0f; /* Цвет фона списка */
+    border-radius: 8px; /* Скругление углов */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Тень для глубины */
+    list-style-type: none; /* Убираем маркеры списка */
+}
+.orders_list_r:hover {
+    background-color: #990d0d; /* Цвет фона при наведении на элемент */
 }
 
-.progress-bar {
-    background-color: #28a745; /* Зеленый цвет заполнения */
-    height: 100%; /* Высота заполнения равна высоте контейнера */
-    border-radius: 5px; /* Закругленные углы для заполнения */
+.orders_list_g {
+    max-width: 300px; /* Максимальная ширина списка */
+    padding: 15px; /* Отступы внутри списка */
+    margin-bottom: 20px;
+    background-color: #0fdd2b; /* Цвет фона списка */
+    border-radius: 8px; /* Скругление углов */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Тень для глубины */
+    list-style-type: none; /* Убираем маркеры списка */
+}
+.orders_list_g:hover {
+    background-color: #0caa21; /* Цвет фона при наведении на элемент */
 }
 
-.progress-percentage {
-    position: absolute; /* Позиционирование относительно родительского контейнера */
-    right: 10px; /* Отступ от правого края */
-    top: 0; /* Выравнивание по верхнему краю */
-    line-height: 20px; /* Центрирование текста по вертикали */
-    font-weight: bold; /* Жирный шрифт для процента */
-    color: #ff2222;
+.orders_list_or {
+    max-width: 300px; /* Максимальная ширина списка */
+    padding: 15px; /* Отступы внутри списка */
+    margin-bottom: 20px;
+    background-color: #ff6c0a; /* Цвет фона списка */
+    border-radius: 8px; /* Скругление углов */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Тень для глубины */
+    list-style-type: none; /* Убираем маркеры списка */
 }
- 
+.orders_list_or:hover {
+    background-color: #ce5809; /* Цвет фона при наведении на элемент */
+}
