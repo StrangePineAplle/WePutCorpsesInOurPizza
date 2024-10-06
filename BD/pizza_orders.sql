@@ -25,11 +25,11 @@ DROP TABLE IF EXISTS `orders`;
 CREATE TABLE `orders` (
   `idOrders` int NOT NULL AUTO_INCREMENT,
   `idUsers` int NOT NULL,
-  `Readiness` bit(1) NOT NULL,
+  `Readiness` varchar(1) NOT NULL,
   PRIMARY KEY (`idOrders`),
   KEY `fk_Orders_User_idx` (`idUsers`),
   CONSTRAINT `fk_Orders_User` FOREIGN KEY (`idUsers`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,6 +38,7 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
+INSERT INTO `orders` VALUES (17,11,'0'),(25,9,'0'),(26,11,'0'),(27,1,'0'),(28,1,'0'),(29,11,'1'),(30,11,'0'),(35,9,'0');
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -50,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-09-29 18:06:43
+-- Dump completed on 2024-10-06 18:34:13

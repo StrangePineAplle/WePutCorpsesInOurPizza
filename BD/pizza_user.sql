@@ -30,7 +30,7 @@ CREATE TABLE `user` (
   `Address` varchar(105) DEFAULT NULL,
   `Telephone` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +39,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'Prob','1234',1234,'1234','1234'),(2,'Test','0',0,'0','0');
+INSERT INTO `user` VALUES (1,'Prob','1234',1234,'1234','1234'),(2,'Test','0',0,'0','0'),(9,'1234','1234',NULL,'1234','1234'),(11,'11','11',NULL,'11','11');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-09-29 18:06:43
+-- Dump completed on 2024-10-06 18:34:12

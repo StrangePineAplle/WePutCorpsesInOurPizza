@@ -40,6 +40,7 @@ CREATE TABLE `kitchen` (
 
 LOCK TABLES `kitchen` WRITE;
 /*!40000 ALTER TABLE `kitchen` DISABLE KEYS */;
+INSERT INTO `kitchen` VALUES (17,10,_binary '',17),(25,4,_binary '\0',2),(25,3,_binary '\0',1),(26,2,_binary '\0',1),(27,10,_binary '\0',1),(28,10,_binary '\0',1),(29,9,_binary '\0',1),(30,4,_binary '\0',1),(35,8,_binary '\0',1);
 /*!40000 ALTER TABLE `kitchen` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-09-29 18:06:43
+-- Dump completed on 2024-10-06 18:34:12
