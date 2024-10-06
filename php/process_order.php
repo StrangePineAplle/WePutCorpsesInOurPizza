@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $id = $_SESSION['user_id'];
 
 
-        $res = sqlrequest("INSERT INTO `pizza`.`orders` (`idUsers`, `Readiness`) VALUES ('$id', b'0'); SELECT LAST_INSERT_ID() AS idOrders;");
+        $res = sqlrequest("INSERT INTO `pizza`.`orders` (`idUsers`, `Readiness`) VALUES ('$id', '0'); SELECT LAST_INSERT_ID() AS idOrders;");
         
 
         $idD = $res[0]['idOrders'];

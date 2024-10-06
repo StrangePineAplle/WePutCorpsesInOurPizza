@@ -72,69 +72,65 @@ $dishes = sqlrequest("SELECT * FROM dish");
 
 
 
-<!-- Контейнер 2 : Секция "О нас" -->
-<div class="about-section" id="about">
-    <h1>Привет, мы кладём в пиццу ананасы!</h1>
-    <p>Ахаха</p>
-</div>
+        <!-- Контейнер 2 : Секция "О нас" -->
+        <div class="about-section" id="about">
+            <h1>Привет, мы кладём в пиццу ананасы!</h1>
+            <p>Ахаха</p>
+        </div>
 
-<!-- Контейнер 3 : Меню с блоками -->
-<div class="menu-block" id="menu">
-    <?php if ($dishes): ?>
-        <?php foreach ($dishes as $dish): ?>
-            <!-- Блок меню для каждого блюда -->
-            <div class="block">
-                <img src="./img/pizzaImg/<?= htmlspecialchars($dish['Picture']) ?>.png" alt="<?= htmlspecialchars($dish['name']) ?>" onclick="openPopup('popup<?= $dish['id'] ?>')" style="cursor: pointer;">
-                <h3><?= htmlspecialchars($dish['name']) ?></h3> <!-- Добавлено название блюда -->
-                <p><?= htmlspecialchars($dish['Description_sh']) ?></p>
-                <p class="cost-text"><?= htmlspecialchars($dish['Cost']) ?></p>
-                <button class="menu-button" onclick="openPopup('popup<?= $dish['id'] ?>')">Подробнее</button>
-            </div>
+        <!-- Контейнер 3 : Меню с блоками -->
+        <div class="menu-block" id="menu">
+            <?php if ($dishes): ?>
+                <?php foreach ($dishes as $dish): ?>
+                    <!-- Блок меню для каждого блюда -->
+                    <div class="block">
+                        <img src="./img/pizzaImg/<?= htmlspecialchars($dish['Picture']) ?>.png" alt="<?= htmlspecialchars($dish['name']) ?>" onclick="openPopup('popup<?= $dish['id'] ?>')" style="cursor: pointer;">
+                        <h3><?= htmlspecialchars($dish['name']) ?></h3> <!-- Добавлено название блюда -->
+                        <p><?= htmlspecialchars($dish['Description_sh']) ?></p>
+                        <p class="cost-text"><?= htmlspecialchars($dish['Cost']) ?></p>
+                        <button class="menu-button" onclick="openPopup('popup<?= $dish['id'] ?>')">Подробнее</button>
+                    </div>
 
-            <!-- Попапы для подробного описания -->
-            <div id="popup<?= $dish['id'] ?>" class="popup">
-                <div class="popup-content">
-                    <span class="close" onclick="closePopup('popup<?= $dish['id'] ?>')">&times;</span>
-                    <table class="popup-table">
-                        <tr>
-                            <td class="popup-image-container">
-                                <img src="./img/pizzaImg/<?= htmlspecialchars($dish['Picture']) ?>.png" alt="<?= htmlspecialchars($dish['name']) ?>" class="popup-image"> <!-- Картинка пиццы -->
-                            </td>
-                            <td class="popup-text-container">
-                                <h2><span class="selected-text">ВЫБРАНА:</span> <?= htmlspecialchars($dish['name']) ?></h2>
-                                <p><?= htmlspecialchars($dish['Description_fu']) ?></p>
-                                <p class="cost-text" ><?= htmlspecialchars($dish['Cost'])?>  </p>
-                                <div class="button-container">
-                                    <button class="add-to-cart" id="<?= htmlspecialchars($dish['id']) ?>" data-price="<?= htmlspecialchars($dish['Cost']) ?>">Добавить в корзину</button>
-                                </div>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
+                    <!-- Попапы для подробного описания -->
+                    <div id="popup<?= $dish['id'] ?>" class="popup">
+                        <div class="popup-content">
+                            <span class="close" onclick="closePopup('popup<?= $dish['id'] ?>')">&times;</span>
+                            <table class="popup-table">
+                                <tr>
+                                    <td class="popup-image-container">
+                                        <img src="./img/pizzaImg/<?= htmlspecialchars($dish['Picture']) ?>.png" alt="<?= htmlspecialchars($dish['name']) ?>" class="popup-image"> <!-- Картинка пиццы -->
+                                    </td>
+                                    <td class="popup-text-container">
+                                        <h2><span class="selected-text">ВЫБРАНА:</span> <?= htmlspecialchars($dish['name']) ?></h2>
+                                        <p><?= htmlspecialchars($dish['Description_fu']) ?></p>
+                                        <p class="cost-text" ><?= htmlspecialchars($dish['Cost'])?>  </p>
+                                        <div class="button-container">
+                                            <button class="add-to-cart" id="<?= htmlspecialchars($dish['id']) ?>" data-price="<?= htmlspecialchars($dish['Cost']) ?>">Добавить в корзину</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
 
-        <?php endforeach; ?>
-    <?php else: ?>
-        <p>Нет доступных блюд.</p>
-    <?php endif; ?>
-</div>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <p>Нет доступных блюд.</p>
+            <?php endif; ?>
+        </div>
 
     <!-- Контейнер 4 : Подвал -->
     <div class="container" id="zakaz">
         <div class="order-container">
-
-            <h3>Заказ номер 1</h3>
-            <div class="progress-container">
-                <div class="progress-bar" style="width: 70%;"></div> <!-- Пример заполнения 70% -->
-                <span class="progress-percentage">70%</span> <!-- Процент загрузки -->
-            </div>
-
+            <button onclick="updateOrders()">Обновить</button>
+            <div id="ord"></div>
         </div>
-    <footer class="footer"></footer>
+        <footer class="footer"></footer>
     </div>
 
     <!-- Подключение скрипта -->
     <script src="script.js"></script>
+
 
 </body>
 </html>

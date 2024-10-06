@@ -81,10 +81,12 @@ function placinganorder() {
         if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status === 200) {
                 const response = JSON.parse(xhr.responseText);
-                console.log("Ответ от сервера:", response); // Отладочный вывод
+
                 if (response.isAuthenticated) {
                     if (response.orderSuccess) {
                         alert("Заказ успешно оформлен!");
+                        updateOrders();
+                        cart.clear();
                     } else {
                         alert("Ошибка при оформлении заказа.");
                     }
@@ -102,6 +104,7 @@ function placinganorder() {
     
     // Отправка запроса
     xhr.send(data);
+
 }
 
 // Функция для открытия попапа корзины и отображения чека
@@ -133,6 +136,40 @@ window.onclick = function(event) {
     });
 };
 
+function updateOrders() {
+
+
+    fetch('php/phpfetch_orders.php')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Сеть не отвечает');
+            }
+            return response.json();
+        })
+        .then(data => {
+
+            const ordDiv = document.getElementById('ord');
+            ordDiv.innerHTML = ''; // Очищаем содержимое div перед добавлением новых данных
+
+            if (data.length > 0) {
+                let ordersHtml = '<ul>'; // Начинаем список
+                data.forEach(order => {
+                    const status = order.Readiness == 0 ? 'Готовится' : 'В пути';
+                    ordersHtml += `<li>Заказ ID: ${order.idOrders} - Статус: ${status}</li>`;
+                });
+                ordersHtml += '</ul>'; // Заканчиваем список
+                ordDiv.innerHTML = ordersHtml; // Добавляем HTML в div
+            } else {
+                ordDiv.innerHTML = '<p>Нет заказов.</p>'; // Если заказов нет
+            }
+        })
+        .catch(error => {
+            const ordDiv = document.getElementById('ord');
+            ordDiv.innerHTML = '<p>Вы не авторизовались</p>';
+        });
+}
+
+
 // Обработка авторизации через AJAX
 document.getElementById('authForm').onsubmit = function(event) {
     event.preventDefault(); // Отменяем стандартное поведение формы
@@ -147,13 +184,16 @@ document.getElementById('authForm').onsubmit = function(event) {
     .then(data => {
         document.getElementById('responseMessage').innerText = data.message; // Отображаем сообщение
         if (data.status === 'success') {
-            closePopup('authPopup'); // Закрываем попап при успешной авторизации
+            closePopup('authPopup'); 
             document.getElementById('authButton').innerText = 'Выйти'; // Меняем текст кнопки на "Выйти"
             document.getElementById('statusMessage').innerText = 'Вы: ' + data.nick ; 
             document.getElementById('regButton').style.display = "none";
+            updateOrders();
         }
     })
     .catch(error => console.error('Ошибка:', error));
+
+    
 };
 
 // Обработка нажатия кнопки авторизации/выхода
@@ -167,9 +207,10 @@ document.getElementById('authButton').onclick = function() {
         .then(data => {
             document.getElementById('responseMessage').innerText = data.message; // Отображаем сообщение
             this.innerText = 'Авторизация'; // Меняем текст кнопки
-            
             // Обновляем статус авторизации
             document.getElementById('statusMessage').innerText = 'Вы: не авторизовались'; // Обновляем статус
+
+            updateOrders();
         })
         .catch(error => console.error('Ошибка:', error));
         document.getElementById('regButton').style.display = "block";
@@ -185,3 +226,4 @@ document.querySelector('.navbar a[onclick*="cartPopup"]').addEventListener('clic
 
 
 
+updateOrders();

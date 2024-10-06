@@ -22,6 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $sqlSelectUser = "SELECT * FROM user WHERE Nick = '$nick' AND Password = '$password'";
     $resultsUser = sqlrequest($sqlSelectUser); // Выполнение запроса
 
+
     if (!empty($resultsUser)) {
         $_SESSION['user_nick'] = $nick; // Сохраняем ник в сессии
         $_SESSION['user_id'] = $resultsUser[0]['id'];
