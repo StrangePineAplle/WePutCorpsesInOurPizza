@@ -87,6 +87,8 @@ function placinganorder() {
                         alert("Заказ успешно оформлен!");
                         updateOrders();
                         cart.clear();
+                        const cartItemsContainer = document.getElementById('cartItems');
+                        cartItemsContainer.innerHTML = 'Ваша корзина пуста.';
                     } else {
                         alert("Ошибка при оформлении заказа.");
                     }
