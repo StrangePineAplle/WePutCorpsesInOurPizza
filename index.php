@@ -73,6 +73,10 @@ $dishes = sqlrequest("SELECT * FROM dish");
                         <input type="password" name="password" id="password" required>
                     </div>
                     <div class="form-group">
+                        <label for="username">Номер телефона:</label>
+                        <input type="tel" name="username" id="username" required>
+                    </div>
+                    <div class="form-group">
                         <label for="email">Почта:</label>
                         <input type="email" name="email" id="email" required>
                     </div>
