@@ -226,7 +226,36 @@ document.getElementById('authButton').onclick = function() {
 document.querySelector('.navbar a[onclick*="cartPopup"]').addEventListener('click', openCartPopup);
 
 
+function Register(event) {
+    event.preventDefault(); // Предотвращаем стандартное поведение формы
 
+    // Собираем данные из формы
+    const formData = {
+        username: document.getElementById('username').value,
+        password: document.getElementById('password').value,
+        phone: document.getElementById('phone').value,
+        address: document.getElementById('address').value,
+    };
+
+    fetch('php/regist.php', { 
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json', 
+        },
+        body: JSON.stringify(formData), 
+    })
+    .then(response => response.json()) 
+    .then(data => {
+        document.getElementById('responseMessage').innerText = data.message;
+        alert("Пользователь зарегистрирован, можете авторизоваться");
+        if (data.success) {
+            closePopup('regPopup');
+        }
+    })
+    .catch(error => {
+        document.getElementById('responseMessage').innerText = 'Произошла ошибка: ' + error.message;
+    });
+}
 
 
 updateOrders();

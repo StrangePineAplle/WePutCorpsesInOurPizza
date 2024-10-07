@@ -61,10 +61,6 @@ $dishes = sqlrequest("SELECT * FROM dish");
                 <h2>Регистрация</h2>
                 <form id="regForm">
                     <div class="form-group">
-                        <label for="name">Имя:</label>
-                        <input type="text" name="name" id="name" required>
-                    </div>
-                    <div class="form-group">
                         <label for="username">Логин:</label>
                         <input type="text" name="username" id="username" required>
                     </div>
@@ -74,17 +70,13 @@ $dishes = sqlrequest("SELECT * FROM dish");
                     </div>
                     <div class="form-group">
                         <label for="username">Номер телефона:</label>
-                        <input type="tel" name="username" id="username" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Почта:</label>
-                        <input type="email" name="email" id="email" required>
+                        <input type="tel" name="phone" id="phone" required>
                     </div>
                     <div class="form-group">
                         <label for="address">Адрес доставки:</label>
                         <input type="text" name="address" id="address" required>
                     </div>
-                    <button type="submit" class="auth-submit-button">Зарегистрироваться</button>
+                    <button type="submit" class="auth-submit-button" onclick="Register(event)">Зарегистрироваться</button>
                 </form>
                 <div id="responseMessage"></div> <!-- Для отображения сообщений -->
             </div>
